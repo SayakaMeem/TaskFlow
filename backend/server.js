@@ -25,11 +25,15 @@ app.get("/tasks",(req,res)=>{
 // CREATE task
 app.post("/tasks",(req,res)=>{
 
-    if(!req.body.title){
-        return res.status(400).json({
-            message:"Title required"
-        });
-    }
+    if(!req.body.title || req.body.title.length < 3){
+
+    return res.status(400).json({
+
+        message:"Title must contain at least 3 characters"
+
+    });
+
+}
 
 
     const task={
